@@ -18,50 +18,56 @@
 	</header>
 
 	<main>
-		<!-- Hero -->
-		<section class="hero">
-			<div class="hero-text">
-				<p class="hero-tagline">Birthday mode / on</p>
-				<h1 class="hero-title">
-					Happy Birthday,
-					<span class="highlight">Rimisha</span>!
-				</h1>
-
-				<div class="hero-pill-row">
-					<div class="hero-pill">More cake. More chaos. More you.</div>
-				</div>
-
-				<p class="hero-subtitle">
-					Here’s a tiny website just for you — full of loud colors, bad jokes,
-					and a whole lot of love from people who are very, very glad you exist.
-				</p>
-
-				<a href="notes.html" class="primary-btn">
-					Read birthday wishes ✨
-				</a>
-			</div>
-
-			<div class="hero-media">
-				<div class="video-card">
-					<h2>Birthday Video 💜</h2>
-					<!-- Option 1: Local video -->
-					<video controls class="birthday-video">
-						<source src="video/birthday-video.mp4" type="video/mp4" />
-						Your browser does not support the video tag.
-					</video>
-
-					<!-- Option 2: YouTube embed (remove the <video> above and uncomment this)
-					<div class="video-wrapper">
-						<iframe src="YOUTUBE_EMBED_URL_HERE"
-							title="Birthday video"
-							frameborder="0"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-							allowfullscreen></iframe>
+		<!-- HERO: full-screen image of birthday girl -->
+		<section class="hero-full">
+			<div class="hero-full-overlay">
+				<div class="hero-content">
+					<p class="hero-tagline">Birthday special / Rimisha</p>
+					<h1 class="hero-title">
+						Happy Birthday,
+						<span class="highlight">Rimisha</span>!
+					</h1>
+					<p class="hero-subtitle">
+						A whole little corner of the internet just to celebrate your chaos,
+						your kindness, and every story we have not told our parents yet.
+					</p>
+		
+					<div class="hero-actions">
+						<a href="notes.html" class="primary-btn">
+							Read your wishes ✨
+						</a>
+						<a href="#about-rimisha" class="ghost-btn">
+							About you
+						</a>
 					</div>
-					-->
 				</div>
 			</div>
 		</section>
+
+		<!-- VIDEO SECTION BELOW HERO -->
+		<section class="section video-section">
+			<h2 class="section-title">Your birthday video 🎬</h2>
+			<p class="section-subtitle">
+				Hit play and relive some of our favourite chaos.
+			</p>
+			<div class="video-shell">
+				<video controls class="birthday-video">
+					<source src="video/birthday-video.mp4" type="video/mp4" />
+					Your browser does not support the video tag.
+				</video>
+				<!-- Or YouTube embed instead of the <video> above -->
+				<!--
+				<div class="video-wrapper">
+					<iframe src="YOUTUBE_EMBED_URL"
+						title="Birthday video"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen></iframe>
+				</div>
+				-->
+			</div>
+		</section>
+
 
 		<!-- Why she’s amazing -->
 		<section class="section section-alt">
