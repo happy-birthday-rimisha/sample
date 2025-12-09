@@ -37,7 +37,7 @@ if (lightbox) {
 	});
 }
 
-// 1. COUNTDOWN TIMER (set her birthday month/day here)
+// 1. COUNTDOWN (15 December)
 (function setupCountdown() {
 	const daysEl = document.getElementById('days');
 	const hoursEl = document.getElementById('hours');
@@ -46,9 +46,8 @@ if (lightbox) {
 
 	if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
 
-	// CHANGE THESE: her birthday (month is 0-based: 0 = Jan, 11 = Dec)
-	const bdayMonth = 11; // December -> 11 (0 = Jan, so Dec = 11)
-	const bdayDay = 15;  // 15 December
+	const bdayMonth = 11; // December (0 = Jan)
+	const bdayDay = 15;   // 15 Dec
 
 	function getNextBirthday() {
 		const now = new Date();
@@ -88,7 +87,7 @@ if (lightbox) {
 	setInterval(updateCountdown, 1000);
 })();
 
-// 2. RANDOM MEMORY BUTTON
+// 2. RANDOM MEMORY
 (function setupMemory() {
 	const memoryButton = document.getElementById('memoryButton');
 	const memoryText = document.getElementById('memoryText');
@@ -128,9 +127,7 @@ if (lightbox) {
 					musicToggle.classList.add('active');
 					musicToggle.textContent = '🔊';
 				})
-				.catch(() => {
-					// Autoplay blocked; show a hint if needed
-				});
+				.catch(() => {});
 		} else {
 			bgMusic.pause();
 			isPlaying = false;
@@ -163,11 +160,10 @@ if (lightbox) {
 		}, duration * 1000);
 	}
 
-	// Create balloons every 1.5 seconds
 	setInterval(createBalloon, 1500);
 })();
 
-// 5. SIMPLE WISH FORM (stored only in memory in this tab)
+// 5. WISH FORM
 (function setupWishForm() {
 	const wishForm = document.getElementById('wishForm');
 	const wishName = document.getElementById('wishName');
