@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo Gallery</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+	<header class="site-header">
+		<div class="logo">🎉 Her Birthday</div>
+		<nav class="nav">
+			<a href="index.html">Home</a>
+			<a href="notes.html">Notes</a>
+			<a href="gallery.html" class="active">Gallery</a>
+		</nav>
+		<button class="menu-toggle" id="menuToggle">☰</button>
+	</header>
+
+	<main>
+		<section class="section">
+			<h1 class="section-title">Our favorite memories 📸</h1>
+			<p class="section-subtitle">
+				Click on a picture to see it larger.
+			</p>
+
+			<div class="gallery-grid">
+				<!-- Replace src with your own image paths -->
+				<img src="images/photo1.jpg" alt="Memory 1" class="gallery-item" />
+				<img src="images/photo2.jpg" alt="Memory 2" class="gallery-item" />
+				<img src="images/photo3.jpg" alt="Memory 3" class="gallery-item" />
+				<img src="images/photo4.jpg" alt="Memory 4" class="gallery-item" />
+				<img src="images/photo5.jpg" alt="Memory 5" class="gallery-item" />
+				<img src="images/photo6.jpg" alt="Memory 6" class="gallery-item" />
+			</div>
+		</section>
+	</main>
+
+	<!-- Lightbox modal -->
+	<div class="lightbox" id="lightbox">
+		<div class="lightbox-content">
+			<span class="lightbox-close" id="lightboxClose">&times;</span>
+			<img src="" alt="Preview" class="lightbox-image" id="lightboxImage" />
+		</div>
+	</div>
+
+	<footer class="site-footer">
+		Made with ❤️ by your friends
+	</footer>
+
+	<script src="script.js"></script>
+</body>
+</html>
