@@ -1,4 +1,4 @@
-// Mobile nav toggle
+// MOBILE NAV
 const menuToggle = document.getElementById('menuToggle');
 const nav = document.querySelector('.nav');
 
@@ -8,7 +8,7 @@ if (menuToggle && nav) {
 	});
 }
 
-// Gallery lightbox
+// GALLERY LIGHTBOX
 const lightbox = document.getElementById('lightbox');
 const lightboxImage = document.getElementById('lightboxImage');
 const lightboxClose = document.getElementById('lightboxClose');
@@ -30,9 +30,162 @@ if (lightboxClose && lightbox) {
 }
 
 if (lightbox) {
-	lightbox.addEventListener('click', (e) => {
+	lightbox.addEventListener('click', e => {
 		if (e.target === lightbox) {
 			lightbox.style.display = 'none';
 		}
 	});
 }
+
+// 1. COUNTDOWN TIMER (set her birthday month/day here)
+(function setupCountdown() {
+	const daysEl = document.getElementById('days');
+	const hoursEl = document.getElementById('hours');
+	const minutesEl = document.getElementById('minutes');
+	const secondsEl = document.getElementById('seconds');
+
+	if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+	// CHANGE THESE: her birthday (month is 0-based: 0 = Jan, 11 = Dec)
+	const bdayMonth = 6; // Example: July = 6
+	const bdayDay = 15;  // Example: 15th
+
+	function getNextBirthday() {
+		const now = new Date();
+		let year = now.getFullYear();
+		let next = new Date(year, bdayMonth, bdayDay);
+		if (next < now) {
+			next = new Date(year + 1, bdayMonth, bdayDay);
+		}
+		return next;
+	}
+
+	const target = getNextBirthday();
+
+	function updateCountdown() {
+		const now = new Date();
+		const diff = target - now;
+		if (diff <= 0) {
+			daysEl.textContent = '00';
+			hoursEl.textContent = '00';
+			minutesEl.textContent = '00';
+			secondsEl.textContent = '00';
+			return;
+		}
+		const totalSeconds = Math.floor(diff / 1000);
+		const days = Math.floor(totalSeconds / (3600 * 24));
+		const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+		const minutes = Math.floor((totalSeconds % 3600) / 60);
+		const seconds = totalSeconds % 60;
+
+		daysEl.textContent = String(days).padStart(2, '0');
+		hoursEl.textContent = String(hours).padStart(2, '0');
+		minutesEl.textContent = String(minutes).padStart(2, '0');
+		secondsEl.textContent = String(seconds).padStart(2, '0');
+	}
+
+	updateCountdown();
+	setInterval(updateCountdown, 1000);
+})();
+
+// 2. RANDOM MEMORY BUTTON
+(function setupMemory() {
+	const memoryButton = document.getElementById('memoryButton');
+	const memoryText = document.getElementById('memoryText');
+
+	if (!memoryButton || !memoryText) return;
+
+	const memories = [
+		"The time we were supposed to study and ended up scrolling memes for 3 hours instead.",
+		"When we laughed so hard we couldn’t breathe and everyone around us got annoyed.",
+		"The unplanned walk that turned into a deep life talk at 11:47 p.m.",
+		"When we chose food over responsibilities and had zero regrets.",
+		"The way you always somehow turn a bad day into a funny story later.",
+		"That one inside joke we can’t explain to anyone without sounding weird."
+	];
+
+	memoryButton.addEventListener('click', () => {
+		const index = Math.floor(Math.random() * memories.length);
+		memoryText.textContent = memories[index];
+	});
+})();
+
+// 3. MUSIC TOGGLE
+(function setupMusic() {
+	const musicToggle = document.getElementById('musicToggle');
+	const bgMusic = document.getElementById('bgMusic');
+
+	if (!musicToggle || !bgMusic) return;
+
+	let isPlaying = false;
+
+	musicToggle.addEventListener('click', () => {
+		if (!isPlaying) {
+			bgMusic
+				.play()
+				.then(() => {
+					isPlaying = true;
+					musicToggle.classList.add('active');
+					musicToggle.textContent = '🔊';
+				})
+				.catch(() => {
+					// Autoplay blocked; show a hint if needed
+				});
+		} else {
+			bgMusic.pause();
+			isPlaying = false;
+			musicToggle.classList.remove('active');
+			musicToggle.textContent = '🎵';
+		}
+	});
+})();
+
+// 4. FLOATING BALLOONS
+(function setupBalloons() {
+	const container = document.getElementById('balloonsContainer');
+	if (!container) return;
+
+	const emojis = ['🎈', '🎉', '🎊', '🎂'];
+
+	function createBalloon() {
+		const b = document.createElement('div');
+		b.className = 'balloon';
+		b.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+		const startLeft = Math.random() * 100;
+		const duration = 10 + Math.random() * 8;
+
+		b.style.left = `${startLeft}vw`;
+		b.style.animationDuration = `${duration}s`;
+		container.appendChild(b);
+
+		setTimeout(() => {
+			container.removeChild(b);
+		}, duration * 1000);
+	}
+
+	// Create balloons every 1.5 seconds
+	setInterval(createBalloon, 1500);
+})();
+
+// 5. SIMPLE WISH FORM (stored only in memory in this tab)
+(function setupWishForm() {
+	const wishForm = document.getElementById('wishForm');
+	const wishName = document.getElementById('wishName');
+	const wishMessage = document.getElementById('wishMessage');
+	const wishList = document.getElementById('wishList');
+
+	if (!wishForm || !wishName || !wishMessage || !wishList) return;
+
+	wishForm.addEventListener('submit', e => {
+		e.preventDefault();
+		const name = wishName.value.trim() || 'Someone';
+		const message = wishMessage.value.trim();
+		if (!message) return;
+
+		const li = document.createElement('li');
+		li.textContent = `${name}: ${message}`;
+		wishList.insertBefore(li, wishList.firstChild);
+
+		wishMessage.value = '';
+	});
+})();
