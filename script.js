@@ -47,8 +47,8 @@ if (lightbox) {
 	if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
 
 	// CHANGE THESE: her birthday (month is 0-based: 0 = Jan, 11 = Dec)
-	const bdayMonth = 6; // Example: July = 6
-	const bdayDay = 15;  // Example: 15th
+	const bdayMonth = 11; // December -> 11 (0 = Jan, so Dec = 11)
+	const bdayDay = 15;  // 15 December
 
 	function getNextBirthday() {
 		const now = new Date();
