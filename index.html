@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Happy Birthday!</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+	<header class="site-header">
+		<div class="logo">🎉 Her Birthday</div>
+		<nav class="nav">
+			<a href="index.html" class="active">Home</a>
+			<a href="notes.html">Notes</a>
+			<a href="gallery.html">Gallery</a>
+		</nav>
+		<button class="menu-toggle" id="menuToggle">☰</button>
+	</header>
+
+	<main>
+		<section class="hero">
+			<div class="hero-text">
+				<p class="hero-tagline">A special day for a very special person</p>
+				<h1 class="hero-title">
+					Happy Birthday,
+					<span class="highlight">[Her Name]</span>!
+				</h1>
+				<p class="hero-subtitle">
+					May your life be filled with laughter, crazy adventures, and
+					endless coffee-fueled late‑night talks.
+				</p>
+				<a href="notes.html" class="primary-btn">
+					Read wishes from your friends ✨
+				</a>
+			</div>
+
+			<div class="hero-media">
+				<div class="video-card">
+					<h2>Birthday Video 💜</h2>
+					<!-- Option 1: Local video file -->
+					<video controls class="birthday-video">
+						<source src="video/birthday-video.mp4" type="video/mp4" />
+						Your browser does not support the video tag.
+					</video>
+
+					<!-- Option 2: YouTube embed (replace URL) -->
+					<!--
+					<div class="video-wrapper">
+						<iframe src="https://www.youtube.com/embed/oTahLEX3NXo"
+							title="Birthday video"
+							frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+							allowfullscreen></iframe>
+					</div>
+					-->
+				</div>
+			</div>
+		</section>
+
+		<section class="section section-alt">
+			<h2 class="section-title">Why you’re amazing 💫</h2>
+			<div class="cards">
+				<div class="card fade-in-up">
+					<h3>Your kindness</h3>
+					<p>You turn ordinary days into something bright and warm.</p>
+				</div>
+				<div class="card fade-in-up">
+					<h3>Your energy</h3>
+					<p>Somehow you are chaos and comfort at the same time.</p>
+				</div>
+				<div class="card fade-in-up">
+					<h3>Your friendship</h3>
+					<p>You make everyone around you feel seen, heard, and loved.</p>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		Made with ❤️ by your friends
+	</footer>
+
+	<script src="script.js"></script>
+</body>
+</html>
