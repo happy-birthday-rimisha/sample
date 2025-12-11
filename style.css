@@ -856,3 +856,55 @@ main {
 		grid-template-columns: 1fr;
 	}
 }
+
+/* VERTICAL WISH LIST */
+.wish-list-section {
+	margin-top: 1.8rem;
+}
+
+.wish-list-container {
+	max-height: 220px;           /* height of the scroll area */
+	overflow-y: auto;           /* vertical scrolling */
+	overflow-x: hidden;         /* no horizontal scroll */
+	border-radius: 16px;
+	background: rgba(17, 24, 39, 0.95);
+	border: 2px solid rgba(255, 212, 94, 0.9);
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+	padding: 0.8rem 1rem;
+}
+
+.wish-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	color: #fefce8;
+	font-size: 0.9rem;
+}
+
+.wish-list-item {
+	display: flex;
+	flex-direction: column;
+	gap: 0.15rem;
+	padding-bottom: 0.3rem;
+	border-bottom: 1px dashed rgba(249, 250, 251, 0.12);
+}
+
+.wish-list-item:last-child {
+	border-bottom: none;
+}
+
+.wish-list-name {
+	font-weight: 700;
+	color: #fbbf24;
+	font-size: 0.85rem;
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+}
+
+.wish-list-message {
+	font-size: 0.9rem;
+	color: #f9fafb;
+}
