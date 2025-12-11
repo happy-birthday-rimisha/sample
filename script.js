@@ -163,14 +163,49 @@ if (lightbox) {
 	setInterval(createBalloon, 1500);
 })();
 
-// 5. WISH FORM
+// 5. WISH FORM -> names to scrolling ticker
 (function setupWishForm() {
 	const wishForm = document.getElementById('wishForm');
 	const wishName = document.getElementById('wishName');
 	const wishMessage = document.getElementById('wishMessage');
-	const wishList = document.getElementById('wishList');
+	const tickerInner = document.getElementById('wishTickerInner');
 
-	if (!wishForm || !wishName || !wishMessage || !wishList) return;
+	if (!wishForm || !wishName || !wishMessage || !tickerInner) return;
+
+	const names = [];
+
+	function renderTicker() {
+		// Clear existing content
+		tickerInner.innerHTML = '';
+
+		if (names.length === 0) {
+			tickerInner.textContent = 'Be the first one to leave a wish for Rimisha ✨';
+			return;
+		}
+
+		// Create a long repeated string so it scrolls nicely
+		const loopCount = 3;
+		for (let i = 0; i < loopCount; i++) {
+			names.forEach(n => {
+				const span = document.createElement('span');
+				span.className = 'wish-ticker-name';
+
+				const bullet = document.createElement('span');
+				bullet.className = 'wish-ticker-bullet';
+				bullet.textContent = '•';
+
+				const nameSpan = document.createElement('span');
+				nameSpan.textContent = n;
+
+				span.appendChild(bullet);
+				span.appendChild(nameSpan);
+				tickerInner.appendChild(span);
+			});
+		}
+	}
+
+	// Initial text
+	renderTicker();
 
 	wishForm.addEventListener('submit', e => {
 		e.preventDefault();
@@ -178,10 +213,14 @@ if (lightbox) {
 		const message = wishMessage.value.trim();
 		if (!message) return;
 
-		const li = document.createElement('li');
-		li.textContent = `${name}: ${message}`;
-		wishList.insertBefore(li, wishList.firstChild);
+		// Save the name only once
+		if (!names.includes(name)) {
+			names.push(name);
+		}
 
+		renderTicker();
+
+		// Clear only the message, keep the name for multiple wishes
 		wishMessage.value = '';
 	});
 })();
