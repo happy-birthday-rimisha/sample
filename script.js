@@ -163,7 +163,7 @@ if (lightbox) {
 	setInterval(createBalloon, 1500);
 })();
 
-// 5. WISH FORM -> persistent vertical wish list
+// 5. WISH FORM -> persistent vertical wish list with delete
 (function setupWishForm() {
 	const wishForm = document.getElementById('wishForm');
 	const wishName = document.getElementById('wishName');
@@ -196,7 +196,7 @@ if (lightbox) {
 			return;
 		}
 
-		wishes.forEach(wish => {
+		wishes.forEach((wish, index) => {
 			const li = document.createElement('li');
 			li.className = 'wish-list-item';
 
@@ -208,13 +208,27 @@ if (lightbox) {
 			msgEl.className = 'wish-list-message';
 			msgEl.textContent = wish.message;
 
+			// delete button
+			const delBtn = document.createElement('button');
+			delBtn.className = 'wish-list-delete';
+			delBtn.textContent = '×';
+			delBtn.title = 'Delete this wish';
+
+			delBtn.addEventListener('click', () => {
+				const all = loadWishes();
+				all.splice(index, 1); // remove this wish
+				saveWishes(all);
+				renderWishes();
+			});
+
 			li.appendChild(nameEl);
 			li.appendChild(msgEl);
+			li.appendChild(delBtn);
 			wishList.appendChild(li);
 		});
 	}
 
-	// Initial render on page load
+	// initial render on page load
 	renderWishes();
 
 	wishForm.addEventListener('submit', e => {
@@ -229,7 +243,6 @@ if (lightbox) {
 		saveWishes(wishes);
 		renderWishes();
 
-		// Clear only the message so they can send multiple with same name
 		wishMessage.value = '';
 	});
 })();
