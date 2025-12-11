@@ -163,86 +163,33 @@ if (lightbox) {
 	setInterval(createBalloon, 1500);
 })();
 
-// 5. WISH FORM -> persistent vertical wish list with delete
-(function setupWishForm() {
-	const wishForm = document.getElementById('wishForm');
-	const wishName = document.getElementById('wishName');
-	const wishMessage = document.getElementById('wishMessage');
-	const wishList = document.getElementById('wishList');
+// 5. CANDLES MINI GAME
+(function setupCandlesGame() {
+	const container = document.getElementById('candlesGame');
+	const messageEl = document.getElementById('candlesMessage');
+	if (!container || !messageEl) return;
 
-	if (!wishForm || !wishName || !wishMessage || !wishList) return;
+	const candles = Array.from(container.querySelectorAll('.candle'));
 
-	const STORAGE_KEY = 'rimisha_wishes';
-
-	function loadWishes() {
-		const stored = localStorage.getItem(STORAGE_KEY);
-		return stored ? JSON.parse(stored) : [];
-	}
-
-	function saveWishes(wishes) {
-		localStorage.setItem(STORAGE_KEY, JSON.stringify(wishes));
-	}
-
-	function renderWishes() {
-		const wishes = loadWishes();
-
-		wishList.innerHTML = '';
-
-		if (wishes.length === 0) {
-			const li = document.createElement('li');
-			li.className = 'wish-list-item';
-			li.textContent = 'Be the first one to leave a wish for Rimisha ✨';
-			wishList.appendChild(li);
-			return;
+	function updateMessage() {
+		const anyLit = candles.some(c => c.dataset.lit === 'true');
+		if (!anyLit) {
+			messageEl.textContent = 'You blew out all the candles for her! 🎂✨';
+		} else {
+			const litCount = candles.filter(c => c.dataset.lit === 'true').length;
+			messageEl.textContent = `${litCount} candle(s) still burning…`;
 		}
-
-		wishes.forEach((wish, index) => {
-			const li = document.createElement('li');
-			li.className = 'wish-list-item';
-
-			const nameEl = document.createElement('div');
-			nameEl.className = 'wish-list-name';
-			nameEl.textContent = wish.name;
-
-			const msgEl = document.createElement('div');
-			msgEl.className = 'wish-list-message';
-			msgEl.textContent = wish.message;
-
-			// delete button
-			const delBtn = document.createElement('button');
-			delBtn.className = 'wish-list-delete';
-			delBtn.textContent = '×';
-			delBtn.title = 'Delete this wish';
-
-			delBtn.addEventListener('click', () => {
-				const all = loadWishes();
-				all.splice(index, 1); // remove this wish
-				saveWishes(all);
-				renderWishes();
-			});
-
-			li.appendChild(nameEl);
-			li.appendChild(msgEl);
-			li.appendChild(delBtn);
-			wishList.appendChild(li);
-		});
 	}
 
-	// initial render on page load
-	renderWishes();
-
-	wishForm.addEventListener('submit', e => {
-		e.preventDefault();
-
-		const name = wishName.value.trim() || 'Someone';
-		const message = wishMessage.value.trim();
-		if (!message) return;
-
-		const wishes = loadWishes();
-		wishes.push({ name, message });
-		saveWishes(wishes);
-		renderWishes();
-
-		wishMessage.value = '';
+	candles.forEach(candle => {
+		candle.addEventListener('click', () => {
+			if (candle.dataset.lit === 'true') {
+				candle.dataset.lit = 'false';
+				candle.classList.add('extinguished');
+				updateMessage();
+			}
+		});
 	});
+
+	updateMessage();
 })();
