@@ -862,26 +862,36 @@ main {
 	margin-top: 1.8rem;
 }
 
+/* Transparent bar with outline */
 .wish-list-container {
-	max-height: 220px;           /* height of the scroll area */
-	overflow-y: auto;           /* vertical scrolling */
-	overflow-x: hidden;         /* no horizontal scroll */
+	max-height: 220px;           /* scroll area height */
+	overflow: hidden;            /* we'll animate the inner list */
 	border-radius: 16px;
-	background: rgba(17, 24, 39, 0.95);
+	background: rgba(255, 255, 255, 0.05);  /* almost transparent */
 	border: 2px solid rgba(255, 212, 94, 0.9);
-	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-	padding: 0.8rem 1rem;
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+	padding: 0.2rem 0.4rem;
+	position: relative;
 }
 
+/* inner wrapper for auto-scroll */
 .wish-list {
 	list-style: none;
 	margin: 0;
-	padding: 0;
+	padding: 0.4rem 0.8rem;
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
 	color: #fefce8;
 	font-size: 0.9rem;
+
+	/* auto upward scroll */
+	animation: wishAutoScroll 25s linear infinite;
+}
+
+/* pause on hover so user can read */
+.wish-list-container:hover .wish-list {
+	animation-play-state: paused;
 }
 
 .wish-list-item {
@@ -890,6 +900,8 @@ main {
 	gap: 0.15rem;
 	padding-bottom: 0.3rem;
 	border-bottom: 1px dashed rgba(249, 250, 251, 0.12);
+	position: relative;
+	padding-right: 1.5rem; /* room for delete button */
 }
 
 .wish-list-item:last-child {
@@ -899,7 +911,7 @@ main {
 .wish-list-name {
 	font-weight: 700;
 	color: #fbbf24;
-	font-size: 0.85rem;
+	font-size: 0.8rem;
 	text-transform: uppercase;
 	letter-spacing: 0.14em;
 }
@@ -907,4 +919,32 @@ main {
 .wish-list-message {
 	font-size: 0.9rem;
 	color: #f9fafb;
+}
+
+/* delete (cross) button */
+.wish-list-delete {
+	position: absolute;
+	top: 0.1rem;
+	right: 0.1rem;
+	border: none;
+	background: transparent;
+	color: #f97373;
+	font-size: 0.9rem;
+	cursor: pointer;
+	padding: 0.1rem 0.3rem;
+	line-height: 1;
+}
+
+.wish-list-delete:hover {
+	color: #fecaca;
+}
+
+/* keyframes for auto vertical scroll */
+@keyframes wishAutoScroll {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(-50%);
+	}
 }
