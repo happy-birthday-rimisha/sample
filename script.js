@@ -163,64 +163,73 @@ if (lightbox) {
 	setInterval(createBalloon, 1500);
 })();
 
-// 5. WISH FORM -> names to scrolling ticker
+// 5. WISH FORM -> persistent vertical wish list
 (function setupWishForm() {
 	const wishForm = document.getElementById('wishForm');
 	const wishName = document.getElementById('wishName');
 	const wishMessage = document.getElementById('wishMessage');
-	const tickerInner = document.getElementById('wishTickerInner');
+	const wishList = document.getElementById('wishList');
 
-	if (!wishForm || !wishName || !wishMessage || !tickerInner) return;
+	if (!wishForm || !wishName || !wishMessage || !wishList) return;
 
-	const names = [];
+	const STORAGE_KEY = 'rimisha_wishes';
 
-	function renderTicker() {
-		// Clear existing content
-		tickerInner.innerHTML = '';
+	function loadWishes() {
+		const stored = localStorage.getItem(STORAGE_KEY);
+		return stored ? JSON.parse(stored) : [];
+	}
 
-		if (names.length === 0) {
-			tickerInner.textContent = 'Be the first one to leave a wish for Rimisha ✨';
+	function saveWishes(wishes) {
+		localStorage.setItem(STORAGE_KEY, JSON.stringify(wishes));
+	}
+
+	function renderWishes() {
+		const wishes = loadWishes();
+
+		wishList.innerHTML = '';
+
+		if (wishes.length === 0) {
+			const li = document.createElement('li');
+			li.className = 'wish-list-item';
+			li.textContent = 'Be the first one to leave a wish for Rimisha ✨';
+			wishList.appendChild(li);
 			return;
 		}
 
-		// Create a long repeated string so it scrolls nicely
-		const loopCount = 3;
-		for (let i = 0; i < loopCount; i++) {
-			names.forEach(n => {
-				const span = document.createElement('span');
-				span.className = 'wish-ticker-name';
+		wishes.forEach(wish => {
+			const li = document.createElement('li');
+			li.className = 'wish-list-item';
 
-				const bullet = document.createElement('span');
-				bullet.className = 'wish-ticker-bullet';
-				bullet.textContent = '•';
+			const nameEl = document.createElement('div');
+			nameEl.className = 'wish-list-name';
+			nameEl.textContent = wish.name;
 
-				const nameSpan = document.createElement('span');
-				nameSpan.textContent = n;
+			const msgEl = document.createElement('div');
+			msgEl.className = 'wish-list-message';
+			msgEl.textContent = wish.message;
 
-				span.appendChild(bullet);
-				span.appendChild(nameSpan);
-				tickerInner.appendChild(span);
-			});
-		}
+			li.appendChild(nameEl);
+			li.appendChild(msgEl);
+			wishList.appendChild(li);
+		});
 	}
 
-	// Initial text
-	renderTicker();
+	// Initial render on page load
+	renderWishes();
 
 	wishForm.addEventListener('submit', e => {
 		e.preventDefault();
+
 		const name = wishName.value.trim() || 'Someone';
 		const message = wishMessage.value.trim();
 		if (!message) return;
 
-		// Save the name only once
-		if (!names.includes(name)) {
-			names.push(name);
-		}
+		const wishes = loadWishes();
+		wishes.push({ name, message });
+		saveWishes(wishes);
+		renderWishes();
 
-		renderTicker();
-
-		// Clear only the message, keep the name for multiple wishes
+		// Clear only the message so they can send multiple with same name
 		wishMessage.value = '';
 	});
 })();
