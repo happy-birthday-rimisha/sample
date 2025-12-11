@@ -149,7 +149,7 @@ main {
 	margin: 0 auto;
 }
 
-/* FULL HERO */
+/* FULL HERO (HOME) */
 .hero-full {
 	position: relative;
 	min-height: 90vh;
@@ -157,7 +157,7 @@ main {
 	border-radius: 24px;
 	overflow: hidden;
 	margin-top: 1.5rem;
-	background-image: url("images/rimisha-hero.jpg"); /* your image */
+	background-image: url("images/rimisha-hero.jpg"); /* your hero image */
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -302,7 +302,7 @@ main {
 	border-radius: 16px;
 }
 
-/* ABOUT SECTION */
+/* ABOUT SECTION (HOME + ABOUT PAGE) */
 .about-section {
 	margin-top: 2.5rem;
 }
@@ -408,6 +408,11 @@ main {
 	margin-bottom: 0.35rem;
 }
 
+/* About page small hero */
+.about-page-hero .section-title {
+	font-size: 1.8rem;
+}
+
 /* RANDOM MEMORY + WISH */
 .memory-wish-layout {
 	display: grid;
@@ -466,18 +471,57 @@ main {
 	font-size: 0.85rem;
 }
 
-.wish-list {
-	list-style: none;
-	margin-top: 0.7rem;
-	max-height: 160px;
-	overflow-y: auto;
-	padding-right: 0.2rem;
+.wish-hint {
+	font-size: 0.8rem;
+	color: #6b7280;
+	margin-top: 0.4rem;
 }
 
-.wish-list li {
-	font-size: 0.85rem;
-	padding: 0.4rem 0.4rem;
-	border-bottom: 1px dashed rgba(209, 213, 219, 0.9);
+/* TICKER SECTION */
+.wish-ticker-section {
+	margin-top: 1.8rem;
+}
+
+/* Outer bar */
+.wish-ticker {
+	position: relative;
+	overflow: hidden;
+	border-radius: 999px;
+	background: rgba(17, 24, 39, 0.95);
+	border: 2px solid rgba(255, 212, 94, 0.9);
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+	padding: 0.6rem 0;
+}
+
+/* Inner scrolling line */
+.wish-ticker-inner {
+	display: inline-block;
+	white-space: nowrap;
+	color: #fefce8;
+	font-size: 0.95rem;
+	font-weight: 600;
+	animation: wishScroll 20s linear infinite;
+}
+
+/* A single wish pill in the ticker */
+.wish-ticker-name {
+	margin: 0 1.5rem;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+}
+
+.wish-ticker-bullet {
+	color: #fbbf24;
+}
+
+@keyframes wishScroll {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
 }
 
 /* COUNTDOWN */
