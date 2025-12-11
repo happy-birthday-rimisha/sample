@@ -74,11 +74,11 @@
 			</div>
 		</section>
 
-		<!-- RANDOM MEMORY + WISH SECTION -->
+		<!-- RANDOM MEMORY + CANDLES -->
 		<section class="section">
 			<h2 class="section-title">More birthday magic</h2>
 			<p class="section-subtitle">
-				Click the button, write a wish, and watch your name join the celebration.
+				Click to relive a random memory, then blow out the candles for her.
 			</p>
 		
 			<div class="memory-wish-layout">
@@ -93,44 +93,26 @@
 					</button>
 				</div>
 		
-				<!-- Wish form (no list here now) -->
+				<!-- Candles game -->
 				<div class="wish-card">
-					<h3>Leave a tiny wish 💌</h3>
-					<form id="wishForm">
-						<input
-							type="text"
-							id="wishName"
-							placeholder="Your name"
-							class="wish-input"
-						/>
-						<textarea
-							id="wishMessage"
-							placeholder="Your wish for Rimisha"
-							class="wish-textarea"
-							rows="3"
-						></textarea>
-						<button type="submit" class="primary-btn wish-btn">
-							Save this wish
-						</button>
-					</form>
+					<h3>Blow out the candles 🕯️</h3>
 					<p class="wish-hint">
-						Your name will appear in the scrolling bar below.
+						Tap each candle to blow it out. When they’re all out, make a wish
+						for her.
+					</p>
+		
+					<div id="candlesGame" class="candles-game">
+						<div class="candle" data-lit="true">🕯️</div>
+						<div class="candle" data-lit="true">🕯️</div>
+						<div class="candle" data-lit="true">🕯️</div>
+						<div class="candle" data-lit="true">🕯️</div>
+						<div class="candle" data-lit="true">🕯️</div>
+					</div>
+		
+					<p id="candlesMessage" class="candles-message">
+						All candles are still burning…
 					</p>
 				</div>
-			</div>
-		</section>
-		
-		<!-- WISH LIST (VERTICAL) -->
-		<section class="section wish-list-section">
-			<h2 class="section-title">People who wished for you 💫</h2>
-			<p class="section-subtitle">
-				Celebrating your special day.
-			</p>
-		
-			<div class="wish-list-container">
-				<ul id="wishList" class="wish-list">
-					<!-- JS will render list items: Name — Wish -->
-				</ul>
 			</div>
 		</section>
 
