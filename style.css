@@ -667,7 +667,7 @@ main {
 	inset: 0;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;  /* start at top so scroll makes sense */
 	padding: 1.4rem;
 	background: linear-gradient(
 		145deg,
@@ -680,6 +680,10 @@ main {
 	transition:
 		opacity var(--transition-med),
 		transform var(--transition-med);
+
+	/* allow long messages to scroll inside the card */
+	overflow-y: auto;
+	max-height: 100%;  /* stay within the card */
 }
 
 .note-from {
@@ -693,6 +697,7 @@ main {
 .note-text {
 	font-size: 0.95rem;
 	line-height: 1.6;
+	margin-top: 0.2rem;
 }
 
 .note-pill {
