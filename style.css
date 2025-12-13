@@ -494,6 +494,78 @@ main {
 	font-size: 1.8rem;
 }
 
+/* About page: fun stat chips row */
+.about-stats-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin-bottom: 0.8rem;
+}
+
+.about-stat-chip {
+	padding: 0.25rem 0.7rem;
+	border-radius: 999px;
+	font-size: 0.75rem;
+	font-weight: 600;
+	background: rgba(255, 255, 255, 0.9);
+	border: 1px dashed rgba(123, 47, 247, 0.45);
+	color: #4b5563;
+}
+
+/* Small mood grid under the main cards */
+.about-mood-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.6rem;
+	margin-top: 0.4rem;
+}
+
+.about-mood-card {
+	background: #fff;
+	border-radius: 14px;
+	padding: 0.55rem 0.65rem;
+	font-size: 0.8rem;
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+}
+
+/* Small “memory tags” row below the grid */
+.about-memory-tags {
+	margin-top: 1.1rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+}
+
+.about-tag-pill {
+	padding: 0.25rem 0.6rem;
+	border-radius: 999px;
+	background: rgba(255, 148, 201, 0.12);
+	border: 1px solid rgba(255, 148, 201, 0.7);
+	font-size: 0.75rem;
+	color: #7b2f57;
+}
+
+/* Slight hover for side cards */
+.about-card,
+.about-mood-card {
+	transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;
+}
+.about-card:hover,
+.about-mood-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* Responsive tweak: stack mood grid nicely on mobile */
+@media (max-width: 768px) {
+	.about-mood-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
 /* RANDOM MEMORY + WISH */
 .memory-wish-layout {
 	display: grid;
