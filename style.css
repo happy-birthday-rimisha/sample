@@ -412,9 +412,14 @@ main {
 
 .about-hero-image-wrap {
 	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.6rem;           /* space between image and badge */
 	justify-self: center;
 }
 
+/* Image stays centered and floating */
 .about-hero-image {
 	width: 230px;
 	height: 230px;
@@ -425,17 +430,18 @@ main {
 	animation: floatSoft 4s ease-in-out infinite alternate;
 }
 
+/* Badge now sits neatly under the image, centered */
 .about-hero-badge {
-	position: absolute;
-	bottom: -10px;
-	right: -12px;
+	position: static;      /* remove absolute positioning */
 	background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
 	color: #fff;
-	padding: 0.4rem 0.8rem;
+	padding: 0.28rem 0.9rem;
 	border-radius: 999px;
-	font-size: 0.75rem;
+	font-size: 0.78rem;
 	font-weight: 700;
-	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+	white-space: nowrap;
+	transform: translateY(2px); /* tiny nudge for a snug feel */
 }
 
 /* subtle floating animation */
