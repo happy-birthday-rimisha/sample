@@ -463,8 +463,8 @@ main {
 	}
 
 	.about-hero-card {
-		max-width: 100px;   /* smaller for mobile */
-		padding: 0.55rem 0.55rem 0.45rem;
+		max-width: 120px;   /* smaller for mobile */
+		
 	}
 
 	.about-hero-card-img {
