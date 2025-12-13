@@ -166,7 +166,7 @@ main {
 @media (min-width: 992px) {
 	.hero-full {
 		min-height: 75vh;          /* a bit shorter so vertical photo fits better */
-		background-position: 65% 25%;
+		background-position: 85% 25%;
 	}
 }
 
