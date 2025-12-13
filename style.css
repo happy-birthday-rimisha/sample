@@ -162,6 +162,14 @@ main {
 	background-repeat: no-repeat;
 }
 
+/* Desktop: show more from centre towards the top */
+@media (min-width: 992px) {
+	.hero-full {
+		min-height: 75vh;          /* a bit shorter so vertical photo fits better */
+		background-position: center 12%;
+	}
+}
+
 .hero-full-overlay {
 	position: absolute;
 	inset: 0;
