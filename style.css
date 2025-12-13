@@ -402,66 +402,73 @@ main {
 	z-index: 1;
 }
 
-/* NEW: 3-card hero row on About page */
+/* 3 small cards, centered on the page */
 .about-hero-cards {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 1rem;
-	margin-top: 1.4rem;
-	max-width: 820px;      /* keeps the whole row compact */
-	margin-inline: auto;   /* center the row */
+	gap: 0.9rem;
+	max-width: 720px;       /* keeps the whole row compact */
+	margin: 1.4rem auto 0;  /* center horizontally */
+	justify-items: center;  /* center each card in its grid cell */
 }
 
 .about-hero-card {
 	background: #111827;
-	border-radius: 18px;
-	padding: 0.9rem 0.9rem 0.75rem;
-	box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+	border-radius: 16px;
+	padding: 0.7rem 0.7rem 0.6rem;
+	box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
 	position: relative;
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
-	align-items: center;   /* center image + label */
+	align-items: center;
 	justify-content: flex-start;
-	transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+	max-width: 210px;       /* actual card width */
+	width: 100%;
+	transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;
 }
 
 .about-hero-card:hover {
-	transform: translateY(-6px) scale(1.02);
-	box-shadow: 0 26px 65px rgba(0, 0, 0, 0.5);
+	transform: translateY(-4px) scale(1.02);
+	box-shadow: 0 20px 52px rgba(0, 0, 0, 0.45);
 }
 
 .about-hero-card-img {
 	width: 100%;
-	max-width: 220px;      /* hard cap so it never gets huge */
-	aspect-ratio: 3 / 4;   /* keeps a nice vertical card shape */
+	aspect-ratio: 3 / 4;
 	object-fit: cover;
-	border-radius: 14px;
+	border-radius: 12px;
 	border: 3px solid rgba(255, 212, 94, 0.85);
 }
 
 .about-hero-card-label {
-	margin-top: 0.5rem;
-	font-size: 0.8rem;
+	margin-top: 0.4rem;
+	font-size: 0.78rem;
 	font-weight: 600;
 	color: #fee2ff;
 	text-align: center;
 	background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-	padding: 0.25rem 0.7rem;
+	padding: 0.22rem 0.7rem;
 	border-radius: 999px;
 	white-space: nowrap;
 }
 
 /* On mobile, stack cards */
 @media (max-width: 768px) {
+	/* 2 cards in a row on mobile */
 	.about-hero-cards {
-		grid-template-columns: 1fr;
-		justify-items: center;   /* center each card */
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		max-width: 100%;
+		gap: 0.7rem;
 	}
 
 	.about-hero-card {
-		max-width: 260px;        /* small, readable card on mobile */
-		width: 100%;
+		max-width: 140px;   /* smaller for mobile */
+		padding: 0.55rem 0.55rem 0.45rem;
+	}
+
+	.about-hero-card-img {
+		border-radius: 10px;
 	}
 }
 
