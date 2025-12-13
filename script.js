@@ -163,27 +163,36 @@ if (lightbox) {
 	setInterval(createBalloon, 1500);
 })();
 
-// STAR BURST ON LOAD
+// STAR RAIN
 (function setupStarBurst() {
 	const container = document.getElementById('starBurst');
 	if (!container) return;
 
 	const icons = ['⭐', '✨', '🌟'];
 
-	for (let i = 0; i < 18; i++) {
+	function spawnStar() {
 		const s = document.createElement('div');
 		s.className = 'star';
 		s.textContent = icons[Math.floor(Math.random() * icons.length)];
 		s.style.left = `${Math.random() * 100}vw`;
-		s.style.animationDelay = `${Math.random() * 0.6}s`;
+		s.style.animationDelay = '0s';      // start immediately
 		container.appendChild(s);
 
+		// Remove star after animation ends
 		setTimeout(() => {
 			if (s.parentNode === container) {
 				container.removeChild(s);
 			}
-		}, 1600);
+		}, 1400);
 	}
+
+	// Initial small burst
+	for (let i = 0; i < 14; i++) {
+		setTimeout(spawnStar, i * 60);
+	}
+
+	// Then keep spawning stars every ~200–350ms
+	setInterval(spawnStar, 200 + Math.random() * 150);
 })();
 
 
