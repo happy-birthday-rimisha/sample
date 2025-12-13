@@ -235,11 +235,16 @@ if (lightbox) {
 
 	// Put all your available images + labels here
 	const pool = [
-		{ src: "images/photo5.jpg"},
-		{ src: "images/photo10.jpg"},
-		{ src: "images/photo15.jpg"},
-		{ src: "images/photo20.jpg"},
-		{ src: "images/photo25.jpg"}
+		{ src: "images/about/about-image1.jpeg"},
+		{ src: "images/about/about-image2.jpeg"},
+		{ src: "images/about/about-image3.jpeg"},
+		{ src: "images/about/about-image4.jpeg"},
+		{ src: "images/about/about-image5.jpeg"},
+		{ src: "images/about/about-image6.jpeg"},
+		{ src: "images/about/about-image7.jpeg"},
+		{ src: "images/about/about-image8.jpeg"},
+		{ src: "images/about/about-image9.jpeg"},
+		{ src: "images/about/about-image10.jpeg"}
 	];
 
 	function getRandomItems(arr, n) {
