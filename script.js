@@ -226,3 +226,46 @@ if (lightbox) {
 
 	updateMessage();
 })();
+
+// === ABOUT PAGE: random rotating hero cards ===
+(function () {
+	const cards = document.querySelectorAll(".about-hero-card");
+
+	if (!cards.length) return; // only run on about page
+
+	// Put all your available images + labels here
+	const pool = [
+		{ src: "images/photo5.jpg", label: "Main character energy ✨" },
+		{ src: "images/photo10.jpg", label: "Chaos + heart 💖" },
+		{ src: "images/photo15.jpg", label: "Golden hour friend 🌅" },
+		{ src: "images/photo20.jpg", label: "Laughing at dumb jokes 😂" },
+		{ src: "images/photo25.jpg", label: "Festival but make it casual 🎡" }
+	];
+
+	function getRandomItems(arr, n) {
+		const copy = [...arr];
+		const result = [];
+		for (let i = 0; i < n && copy.length; i++) {
+			const idx = Math.floor(Math.random() * copy.length);
+			result.push(copy.splice(idx, 1)[0]);
+		}
+		return result;
+	}
+
+	function refreshCards() {
+		const picks = getRandomItems(pool, cards.length);
+		cards.forEach((card, i) => {
+			const img = card.querySelector(".about-hero-card-img");
+			const label = card.querySelector(".about-hero-card-label");
+			if (!img || !label || !picks[i]) return;
+
+			img.src = picks[i].src;
+			label.textContent = picks[i].label;
+		});
+	}
+
+	// initial load
+	refreshCards();
+	// change every 6 seconds
+	setInterval(refreshCards, 6000);
+})();
