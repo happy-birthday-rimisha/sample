@@ -229,48 +229,42 @@ if (lightbox) {
 
 // === ABOUT PAGE: random rotating hero cards ===
 (function () {
-	const cards = document.querySelectorAll(".about-hero-card");
+  const cards = document.querySelectorAll(".about-hero-card");
 
-	if (!cards.length) return; // only run on about page
+  if (!cards.length) return; // only run on about page
 
-	// Put all your available images + labels here
-	const pool = [
-		{ src: "images/about/about-image1.jpeg"},
-		{ src: "images/about/about-image2.jpeg"},
-		{ src: "images/about/about-image3.jpeg"},
-		{ src: "images/about/about-image4.jpeg"},
-		{ src: "images/about/about-image5.jpeg"},
-		{ src: "images/about/about-image6.jpeg"},
-		{ src: "images/about/about-image7.jpeg"},
-		{ src: "images/about/about-image8.jpeg"},
-		{ src: "images/about/about-image9.jpeg"},
-		{ src: "images/about/about-image10.jpeg"}
-	];
+  const pool = [
+    { src: "images/about/about-image1.jpeg" },
+    { src: "images/about/about-image2.jpeg" },
+    { src: "images/about/about-image3.jpeg" },
+    { src: "images/about/about-image4.jpeg" },
+    { src: "images/about/about-image5.jpeg" },
+    { src: "images/about/about-image6.jpeg" },
+    { src: "images/about/about-image7.jpeg" },
+    { src: "images/about/about-image8.jpeg" },
+    { src: "images/about/about-image9.jpeg" },
+    { src: "images/about/about-image10.jpeg" }
+  ];
 
-	function getRandomItems(arr, n) {
-		const copy = [...arr];
-		const result = [];
-		for (let i = 0; i < n && copy.length; i++) {
-			const idx = Math.floor(Math.random() * copy.length);
-			result.push(copy.splice(idx, 1)[0]);
-		}
-		return result;
-	}
+  function getRandomItems(arr, n) {
+    const copy = [...arr];
+    const result = [];
+    for (let i = 0; i < n && copy.length; i++) {
+      const idx = Math.floor(Math.random() * copy.length);
+      result.push(copy.splice(idx, 1)[0]);
+    }
+    return result;
+  }
 
-	function refreshCards() {
-		const picks = getRandomItems(pool, cards.length);
-		cards.forEach((card, i) => {
-			const img = card.querySelector(".about-hero-card-img");
-			const label = card.querySelector(".about-hero-card-label");
-			if (!img || !label || !picks[i]) return;
+  function refreshCards() {
+    const picks = getRandomItems(pool, cards.length);
+    cards.forEach((card, i) => {
+      const img = card.querySelector(".about-hero-card-img");
+      if (!img || !picks[i]) return;
+      img.src = picks[i].src;
+    });
+  }
 
-			img.src = picks[i].src;
-			label.textContent = picks[i].label;
-		});
-	}
-
-	// initial load
-	refreshCards();
-	// change every 6 seconds
-	setInterval(refreshCards, 6000);
+  refreshCards();
+  setInterval(refreshCards, 6000);
 })();
