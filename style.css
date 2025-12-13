@@ -438,7 +438,7 @@ main {
 	aspect-ratio: 3 / 4;
 	object-fit: cover;
 	border-radius: 12px;
-	border: 1px solid rgba(255, 212, 94, 0.85);
+	border: none;
 }
 
 .about-hero-card-label {
