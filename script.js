@@ -95,12 +95,12 @@ if (lightbox) {
 	if (!memoryButton || !memoryText) return;
 
 	const memories = [
-		"The time we were supposed to study and ended up scrolling memes for 3 hours instead.",
-		"When we laughed so hard we couldn’t breathe and everyone around us got annoyed.",
-		"The unplanned walk that turned into a deep life talk at 11:47 p.m.",
-		"When we chose food over responsibilities and had zero regrets.",
-		"The way you always somehow turn a bad day into a funny story later.",
-		"That one inside joke we can’t explain to anyone without sounding weird."
+		"You're the best Subway ordering person, thanks for introducing subway to me.",
+		"When we have visited the Dagduseth temple and enojying the Puneri Ganesh Chaturthi, your legs crying in pain so badly.",
+		"The unplanned walk that turned into a ice cream at Merdian at 11:47 p.m.",
+		"Supreme Corner pav bhaji was a gem we discovered",
+		"The scooty rides and getting direction through a G-map was a complete adventure in pune streets",
+		"Jain concerts are one of the Gem and best experience."
 	];
 
 	memoryButton.addEventListener('click', () => {
