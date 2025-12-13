@@ -235,11 +235,11 @@ if (lightbox) {
 
 	// Put all your available images + labels here
 	const pool = [
-		{ src: "images/photo5.jpg", label: "Main character energy ✨" },
-		{ src: "images/photo10.jpg", label: "Chaos + heart 💖" },
-		{ src: "images/photo15.jpg", label: "Golden hour friend 🌅" },
-		{ src: "images/photo20.jpg", label: "Laughing at dumb jokes 😂" },
-		{ src: "images/photo25.jpg", label: "Festival but make it casual 🎡" }
+		{ src: "images/photo5.jpg"},
+		{ src: "images/photo10.jpg"},
+		{ src: "images/photo15.jpg"},
+		{ src: "images/photo20.jpg"},
+		{ src: "images/photo25.jpg"}
 	];
 
 	function getRandomItems(arr, n) {
