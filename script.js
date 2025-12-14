@@ -142,7 +142,7 @@ if (lightbox) {
 	const container = document.getElementById('balloonsContainer');
 	if (!container) return;
 
-	const emojis = ['🎈', '🎉', '🎊', '🎂'];
+	const emojis = ['🎈', '❤️', '🎂'];
 
 	function createBalloon() {
 		const b = document.createElement('div');
