@@ -149,7 +149,7 @@ if (lightbox) {
 		b.className = 'balloon';
 		b.textContent = emojis[Math.floor(Math.random() * emojis.length)];
 		const startLeft = Math.random() * 100;
-		const duration = 10 + Math.random() * 8;
+		const duration = 18 + Math.random() * 10;
 
 		b.style.left = `${startLeft}vw`;
 		b.style.animationDuration = `${duration}s`;
@@ -160,7 +160,7 @@ if (lightbox) {
 		}, duration * 1000);
 	}
 
-	setInterval(createBalloon, 1500);
+	setInterval(createBalloon, 3000);
 })();
 
 // STAR RAIN
