@@ -962,16 +962,22 @@ main {
 }
 
 .lightbox-content {
-	position: relative;
-	max-width: min(900px, 90vw);
-	max-height: 85vh;
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .lightbox-image {
-	width: 100%;
-	height: auto;
-	border-radius: var(--card-radius-md);
-	box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7);
+  max-width: 100%;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--card-radius-md);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7);
 }
 
 .lightbox-close {
