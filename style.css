@@ -315,6 +315,33 @@ main {
 	border-radius: 16px;
 }
 
+/* Special layout for YouTube Short */
+.video-shell--short {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 22px;
+  padding: 1rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+  border: 2px solid rgba(255, 148, 201, 0.75);
+  display: flex;
+  justify-content: center;
+}
+
+.short-frame {
+  width: min(320px, 100%);
+  aspect-ratio: 9 / 16;          /* vertical phone shape */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+  background: #000;
+}
+
+.short-embed {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
 /* ABOUT SECTION (HOME + ABOUT PAGE) */
 /* Wrap for about section to make it feel like a dedicated card */
 .about-section {
